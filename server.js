@@ -9,14 +9,14 @@ const { createServer } = require("http");
 
 app.use(
   cors({
-    origin: "https://vanilla-chatapp.netlify.app/",
+    origin: "https://vanilla-chatapp.netlify.app",
   })
 );
 
 const server = createServer(app);
 
 const io = require("socket.io")(server, {
-  cors: { origin: "https://vanilla-chatapp.netlify.app/" },
+  cors: { origin: "https://vanilla-chatapp.netlify.app" },
 });
 
 io.on("connection", (socket) => {
