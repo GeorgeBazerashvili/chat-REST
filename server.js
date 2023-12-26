@@ -7,10 +7,16 @@ const mongoose = require("mongoose");
 const path = require("path");
 const { createServer } = require("http");
 
+app.use(
+  cors({
+    origin: "https://vanilla-chatapp.netlify.app/",
+  })
+);
+
 const server = createServer(app);
 
 const io = require("socket.io")(server, {
-  cors: { origin: "https://vanilla-chatapp.netlify.app" },
+  cors: { origin: "https://vanilla-chatapp.netlify.app/" },
 });
 
 io.on("connection", (socket) => {
@@ -24,12 +30,6 @@ io.on("connection", (socket) => {
     `User with id of ${socket.id} has been disconnected.`;
   });
 });
-
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
