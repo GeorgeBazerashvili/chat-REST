@@ -10,6 +10,7 @@ const { createServer } = require("http");
 app.use(
   cors({
     origin: "https://vanilla-chatapp.netlify.app",
+    "Access-Control-Allow-Origin": "https://vanilla-chatapp.netlify.app",
   })
 );
 
